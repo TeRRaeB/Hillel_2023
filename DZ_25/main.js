@@ -1,13 +1,23 @@
-const inputUrl = document.getElementById('enterUrl');
-const goToUrl = document.getElementById('goToUrl');
-let url = '';
-inputUrl.addEventListener('click',getUrl);
+const url = 'www.httpvshttps.com';
 
-function getUrl(){
-     url = prompt('Введите ссылку');
-    if(!url.startsWith("http://") && !url.startsWith("https://")){
-        url = 'http://' + url;
-        console.log('Ссылка готова для перехода, нажмите другую кнопку' + url);
-        goToUrl.href = url;
+function redirectToURL(protocol) {
+    let finalUrl = url.toLowerCase();
+
+    if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
+        finalUrl = 'http://' + finalUrl;
     }
+
+    if (protocol === 'https') {
+        finalUrl = finalUrl.replace('http://', 'https://');
+    }
+
+    window.location.href = finalUrl;
 }
+
+document.getElementById('btnRedirectHttp').addEventListener('click', () =>{
+    redirectToURL('http');
+});
+
+document.getElementById('btnRedirectHttps').addEventListener('click', () =>{
+    redirectToURL('https');
+});
