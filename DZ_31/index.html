@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Домашка №31</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+ 
+  <body>
+    <div id="table" style="display: none;">
+    </div>
+    <div id="form-container">
+      <form action="" id="formData">
+        <div>
+          <label for="name">Имя Фамилия</label>
+          <input id="name" name="name" type="text" />
+        </div>
+        <div>
+          <label for="birth_date">Дата рождения</label>
+          <input id="birth_date" name="birth_date" type="text" />
+        </div>
+        <div>
+          <label for="sex1">Женский</label>
+          <input id="sex1" type="radio" name="sex" value="women" />
+          <label for="sex2">Мужской</label>
+          <input id="sex2" type="radio" name="sex" value="men" />
+        </div>
+        <div>
+          <label for="city">Выберите город:</label>
+          <select name="city" id="city">
+            <option value="Odessa">Одесса</option>
+            <option value="Kyiv">Киев</option>
+            <option value="Harkov">Харьков</option>
+            <option value="Dnepr">Днепр</option>
+          </select>
+        </div>
+        <div>
+          <label for="address">Адрес:</label>
+          <textarea type="textarea" id="address"></textarea>
+        </div>
+        <div>
+          <label for="lang-ua">Украинский</label>
+          <input type="checkbox" id="lang-ua" value="ukraine" name="lang" />
+        </div>
+        <div>
+          <label for="lang-eng">Ангийский</label>
+          <input type="checkbox" id="lang-eng" value="english" name="lang" />
+        </div>
+        <div>
+          <label for="lang-ge">Немецкий</label>
+          <input type="checkbox" id="lang-ge" value="german" name="lang" />
+        </div>
+        <div>
+          <label for="lang-fr">Французкий</label>
+          <input type="checkbox" id="lang-fr" value="france" name="lang" />
+        </div>
+        <button type="submit">Сохранить</button>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
