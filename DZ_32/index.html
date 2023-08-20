@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Домашка №32</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div class="container">
+  <div id="categories" class="categories">
+    <ul></ul>
+
+<div class="orders">
+  <button class="otherOrder" onclick="getAllOrders()">Ваши заказы</button> 
+</div>
+  </div>
+  <div id="products" class="products"></div>
+
+  <div id="product-info" class="product-info">
+    <h2 id="product-name"></h2>
+    <p id="product-description"></p>
+    <button id="buy-button">Купити</button>
+  </div>
+</div>
+
+<div id="popup">
+  <form id="orderForm">
+    <div>
+      <label for="fullName">ФИО Покупателя:</label>
+      <input type="text" name="fullName" id="fullName" required>
+    </div>
+    <div>
+      <label for="city">Город:</label>
+      <select id="city" name="city" required>
+        <option value="">Выберите город</option>
+        <option value="Киев">Киев</option>
+        <option value="Львов">Львов</option>
+        <option value="Одесса">Одесса</option>
+        <option value="Харьков">Харьков</option>
+        <option value="Днепр">Днепр</option>
+      </select>
+    </div>
+    <div>
+      <label for="novaPoshta">Склад Новой почты:</label>
+      <input type="text" name="novaPoshta" id="novaPoshta" required>
+    </div>
+    <div>
+      <label>Ноложенный платеж или оптала картой:</label>
+      <label><input type="radio" name="payment" value="Наложенный" required> Наложенный</label>
+      <label><input type="radio" name="payment" value="Карта банка" required> Карта банка</label>
+    </div>
+    <div>
+      <label for="quantity">Кол-во продукции:</label>
+      <input type="number" name="quantity" id="quantity" required>
+    </div>
+    <div>
+      <label for="comment">Комментарий к заказу:</label>
+      <textarea name="comment" id="comment"></textarea>
+    </div>
+    <div>
+      <button type="submit">Заказать.</button>
+      <button id="closePopupBtn">Закрыть</button>
+    </div>
+  </form>
+</div>
+
+<div id="orderInfo"></div>
+<script src="data.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
