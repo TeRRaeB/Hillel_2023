@@ -44,10 +44,12 @@ orderForm.addEventListener("submit", function (e) {
 
   const { fullName, city, novaPoshta, payment, quantity, comment } = objData;
 
-  if (!fullName || !city || !novaPoshta || !payment || !quantity) {
+  const validationInput = [fullName, city, novaPoshta, payment, quantity];
+  if (validationInput.some((value) => !value)) {
     showError("Заполните все поля.");
     return;
   }
+
   if (!isFullNameValid(fullName)) {
     showError("Введите корректно ФИО (буквы и пробелы)");
     return;
@@ -143,30 +145,35 @@ function showOrder(name) {
   displayOrderInfo(order);
 }
 function getAllOrders() {
-  if (localStorage.length == 0) {
-
-    productsContainer.textContent = "";
-    alert("У вас пока нет заказов.");
-  } else {
-    const orders = localStorage;
-    productsContainer.textContent = "";
-    for (let i = 0; i < localStorage.length; i++) {
-      let divOrder = document.createElement("div");
-      let nameOrder = localStorage.key(i);
-      divOrder.className = "order";
-      divOrder.textContent = nameOrder;
-      let buttonSnow = document.createElement('button');
-      buttonSnow.textContent = 'Показать детали';
-      buttonSnow.className = 'otherOrder';
-      buttonSnow.addEventListener('click',() => showOrder(nameOrder));
-      divOrder.appendChild(buttonSnow);
-      let buttonDel = document.createElement('button');
-      buttonDel.className = 'deletedOrder';
-      buttonDel.textContent ='Удалить заказ';
-      buttonDel.addEventListener('click',()=> deletedOrder(nameOrder));
-      divOrder.appendChild(buttonDel);
-      productsContainer.appendChild(divOrder);
+  const search = "order";
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key.startsWith(search)) {
+      getOrderFromLocalStorage();
     }
+  }
+  return false;
+}
+
+function getOrderFromLocalStorage() {
+  const orders = localStorage;
+  productsContainer.textContent = "";
+  for (let i = 0; i < localStorage.length; i++) {
+    let divOrder = document.createElement("div");
+    let nameOrder = localStorage.key(i);
+    divOrder.className = "order";
+    divOrder.textContent = nameOrder;
+    let buttonSnow = document.createElement("button");
+    buttonSnow.textContent = "Показать детали";
+    buttonSnow.className = "otherOrder";
+    buttonSnow.addEventListener("click", () => showOrder(nameOrder));
+    divOrder.appendChild(buttonSnow);
+    let buttonDel = document.createElement("button");
+    buttonDel.className = "deletedOrder";
+    buttonDel.textContent = "Удалить заказ";
+    buttonDel.addEventListener("click", () => deletedOrder(nameOrder));
+    divOrder.appendChild(buttonDel);
+    productsContainer.appendChild(divOrder);
   }
 }
 
@@ -180,7 +187,12 @@ function getOrder(name) {
 
 function deletedOrder(name) {
   localStorage.removeItem(name);
-  getAllOrders();
+  if (getAllOrders) {
+    getOrderFromLocalStorage();
+  } else {
+    productsContainer.textContent = "";
+    alert("У вас пока нет заказов.");
+  }
 }
 
 function generatorCount() {
