@@ -155,8 +155,7 @@ function getAllOrders() {
   return false;
 }
 
-function getOrderFromLocalStorage() {
-  const orders = localStorage;
+function getOrderFromLocalStorage() { 
   productsContainer.textContent = "";
   for (let i = 0; i < localStorage.length; i++) {
     let divOrder = document.createElement("div");
